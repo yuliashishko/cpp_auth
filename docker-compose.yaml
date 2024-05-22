@@ -1,0 +1,18 @@
+services:
+  back:
+    build: .
+    ports:
+      - '127.0.0.1:9090:9090'
+  postgres:
+    image: postgres:latest
+    ports:
+      - '127.0.0.1:5432:5432'
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: authdb
+    volumes:
+      - 'postgres_data:/var/lib/postgresql/data'
+
+volumes:
+  postgres_data:
